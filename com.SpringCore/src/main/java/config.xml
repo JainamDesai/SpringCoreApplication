@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd 
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+ 
+ <context:annotation-config></context:annotation-config>
+ <context:component-scan base-package="com.Springcore.Component"></context:component-scan>
+
+<!-- component annotation  -->
+
+  <bean class="SpringCore.com.SpringCore.Student" name="Student1" p:studentId="2121" p:name="mehul" p:address="Mumbai">
+  </bean>
+  <bean class="com.Springcore.collections.Employee" name="Employee1">
+  <property name="empName" value="jay"/>
+  <property name="phone">                           <!--   property injection -->
+  <list>
+  <value>121221</value>
+  <value>3323232</value>
+  <value>4434343</value>                             <!--   list injection -->
+  </list>
+  </property>
+  <property name="address">
+  <set>
+  <value>Mumbai</value>                               <!-- set injection -->
+  <value>Ahmedabad</value>
+  </set>
+  </property>
+  <property name="cource">
+  <map>
+  <entry key="java" value="one month"></entry>         <!--  map injection -->
+  <entry key="php" value="two month"></entry>
+  </map>
+  </property>
+  </bean>
+  <bean class="com.Spring.referance.B" name="b">
+  <property name="y" value="90"/></bean>
+  <bean class="com.Spring.referance.A" name="a">
+  <property name="x" value="60"/>
+  <property name="b">
+  <ref bean="b"/>                 <!--  //referance injection -->
+  </property>
+  </bean>
+  <bean class="com.Springcore.constructor.Person" name="person">
+  <constructor-arg>
+  <value>                                        <!--  constructor injection -->
+  jainam
+  </value>
+  </constructor-arg>
+  <constructor-arg>
+  <value>
+  Mumbai
+  </value>
+  </constructor-arg>
+  </bean>
+  <bean class="com.Springcore.lifecycle.Samosa" name="s1">
+  <property name="price" value="50"/>
+  </bean>
+   <bean class="com.Springcore.autowire.Emp" name="emp1">
+  <property name="name" value="Jainam"/>
+  <property name="lastname" value="desai"/>
+  </bean>
+   <bean class="com.Springcore.autowire.Address" name="add1">    <!-- autowire injection -->
+  <property name="city" value="Jaipur"/>
+  <property name="country" value="India"/>
+  </bean> 
+   <bean class="com.Springcore.autowire.Address" name="add2">    <!-- autowire injection -->
+  <property name="city" value="Mumbai"/>
+  <property name="country" value="India"/>                      <!-- qualifier annotation -->
+  </bean> 
+  </beans>
